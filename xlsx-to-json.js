@@ -117,8 +117,9 @@ async function convertExcelToJson(filePath) {
     };
 
     const jsonString = JSON.stringify(json, null, 2);
-    fs.writeFileSync('dist/latest-timetable.json', jsonString);
-
+    const fileOutput = 'dist/latest-timetable.json'
+    fs.writeFileSync(fileOutput, jsonString);
+    console.log("Written to:", fileOutput)
     return json;
   } catch (error) {
     console.error('Error:', error);
