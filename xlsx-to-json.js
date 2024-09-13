@@ -41,7 +41,7 @@ function processCell(cell, isFirst = false) {
   }
 }
 
-async function convertExcelToJson(filePath) {
+async function convertExcelToJson(filePath, colsOutbound, colsReturn) {
   try {
     const workbook = new ExcelJS.Workbook();
     await workbook.xlsx.readFile(filePath);
@@ -70,14 +70,20 @@ async function convertExcelToJson(filePath) {
           secondNullCol = col
         }
         if (cell && firstTable && !secondTable && col > firstTable.lastCol && col > secondNullCol && secondNullCol > -1) {
-          // console.log("row", row, "col", col, secondNullCol)
+          console.log("row", row, "col", col, " secondNullCol", secondNullCol, " firstTable.lastCol", firstTable.lastCol)
           secondTable = { row: row, col: col };
         }
         if (cell && secondTable) {
+          console.log("cell", cell, secondTable)
           secondTable.lastCol = col
         }
       }
     }
+    // colsOutbound
+    firstTable.col = parseInt(colsOutbound.split(',')[0])
+    firstTable.lastCol = parseInt(colsOutbound.split(',')[1])
+    secondTable.col = parseInt(colsReturn.split(',')[0])
+    secondTable.lastCol = parseInt(colsReturn.split(',')[1])
     console.log("firstTable", firstTable)
     console.log("secondTable", secondTable)
 
