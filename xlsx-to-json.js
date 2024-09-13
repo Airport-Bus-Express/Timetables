@@ -69,7 +69,7 @@ async function convertExcelToJson(filePath) {
         if (!cell && firstTable && secondNullCol === -1) {
           secondNullCol = col
         }
-        if (cell && firstTable && !secondTable && col > secondNullCol && secondNullCol > -1) {
+        if (cell && firstTable && !secondTable && col > firstTable.lastCol && col > secondNullCol && secondNullCol > -1) {
           // console.log("row", row, "col", col, secondNullCol)
           secondTable = { row: row, col: col };
         }
