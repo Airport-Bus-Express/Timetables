@@ -1,6 +1,7 @@
 const XLSX = require('xlsx');
 const xmlbuilder2 = require('xmlbuilder2');
 const fs = require('fs').promises;
+const STOPS = require('./timetables/stops.json');
 
 // TransXChange Configuration
 const OPERATOR_ID = 'OId_Example';
@@ -9,12 +10,12 @@ const LINE_NAME = 'XMAS';
 const DESCRIPTION = 'Christmas Special Service';
 
 // Stop definitions with ATCO codes
-const STOPS = {
-  'STD': { atcoCode: '0000000001', commonName: 'Standard' },
-  'STR': { atcoCode: '0000000002', commonName: 'Straight' },
-  'BETH': { atcoCode: '0000000003', commonName: 'Bethlehem' },
-  'LIV': { atcoCode: '0000000004', commonName: 'Liverpool' }
-};
+// const STOPS = {
+//   'STD': { atcoCode: '0000000001', commonName: 'Standard' },
+//   'STR': { atcoCode: '0000000002', commonName: 'Straight' },
+//   'BETH': { atcoCode: '0000000003', commonName: 'Bethlehem' },
+//   'LIV': { atcoCode: '0000000004', commonName: 'Liverpool' }
+// };
 
 // Define service patterns
 const OUTBOUND_STOPS = ['STD', 'STR', 'BETH', 'LIV', 'BETH'];

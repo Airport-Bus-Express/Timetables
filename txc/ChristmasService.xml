@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<TransXChange xmlns="http://www.transxchange.org.uk/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.transxchange.org.uk/ http://www.transxchange.org.uk/schema/2.4/TransXChange_general.xsd" CreationDateTime="2024-12-17T19:02:36.332Z" ModificationDateTime="2024-12-17T19:02:36.332Z" Modification="new" RevisionNumber="1" FileName="ChristmasService.xml" SchemaVersion="2.4">
+<TransXChange xmlns="http://www.transxchange.org.uk/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.transxchange.org.uk/ http://www.transxchange.org.uk/schema/2.4/TransXChange_general.xsd" CreationDateTime="2024-12-17T19:18:10.417Z" ModificationDateTime="2024-12-17T19:18:10.417Z" Modification="new" RevisionNumber="1" FileName="ChristmasService.xml" SchemaVersion="2.4">
   <Services>
     <Service>
       <ServiceCode>PB0000123</ServiceCode>
@@ -709,19 +709,19 @@
   <StopPoints>
     <AnnotatedStopPointRef>
       <StopPointRef>0000000001</StopPointRef>
-      <CommonName>Standard</CommonName>
+      <CommonName>Stansted</CommonName>
     </AnnotatedStopPointRef>
     <AnnotatedStopPointRef>
       <StopPointRef>0000000002</StopPointRef>
-      <CommonName>Straight</CommonName>
+      <CommonName>Stratford</CommonName>
     </AnnotatedStopPointRef>
     <AnnotatedStopPointRef>
       <StopPointRef>0000000003</StopPointRef>
-      <CommonName>Bethlehem</CommonName>
+      <CommonName>Bethnal Green</CommonName>
     </AnnotatedStopPointRef>
     <AnnotatedStopPointRef>
       <StopPointRef>0000000004</StopPointRef>
-      <CommonName>Liverpool</CommonName>
+      <CommonName>Liverpool Street</CommonName>
     </AnnotatedStopPointRef>
   </StopPoints>
 </TransXChange>
