@@ -1,0 +1,2 @@
+service_id,monday,tuesday,wednesday,thursday,friday,saturday,sunday,start_date,end_date
+xmas_2024,0,0,0,0,0,0,0,20241224,20250101

@@ -1,0 +1,26 @@
+{
+  "STD": {
+    "stop_id": "STD",
+    "stop_name": "Stansted",
+    "stop_lat": 51.889404825186446,
+    "stop_lon": 0.2634912068236981
+  },
+  "STR": {
+    "stop_id": "STR",
+    "stop_name": "Stratford",
+    "stop_lat": 51.54392911033685,
+    "stop_lon": -0.00404018201721
+  },
+  "BETH": {
+    "stop_id": "BETH",
+    "stop_name": "Bethnal Green",
+    "stop_lat": 51.5274392724839,
+    "stop_lon": -0.0567722067189
+  },
+  "LIV": {
+    "stop_id": "LIV",
+    "stop_name": "Liverpool Street",
+    "stop_lat": 51.51954568815905,
+    "stop_lon": -0.07926786993970
+  }
+}
