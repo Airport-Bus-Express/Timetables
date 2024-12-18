@@ -16,9 +16,34 @@ const SERVICE_ID = 'xmas_2024';
 //   'LIV': { stop_id: 'LIV', stop_name: 'Liverpool', stop_lat: 0, stop_lon: 0 }
 // };
 
+
 // Define the sequence of stops for outbound and return journeys
 const OUTBOUND_STOPS = ['STD', 'STR', 'BETH', 'LIV', 'BETH'];
 const RETURN_STOPS = ['LIV', 'BETH', 'STR', 'STD'];
+
+// Function to format time string from Excel format to GTFS format
+function formatTimeString(timeStr) {
+  if (!timeStr) return null;
+
+  // Convert the decimal time format (e.g., "2.40" or "0.50") to HH:MM format
+  const [hours, minutes] = timeStr.split('.');
+
+  // Parse hours and minutes as integers
+  let hh = parseInt(hours, 10);
+  let mm = minutes ? parseInt(minutes, 10) : 0;
+
+  // Handle cases where minutes are given in decimal format
+  // e.g., "2.4" should be interpreted as "2:40" not "2:04"
+  if (minutes && minutes.length === 1) {
+    mm = mm * 10;
+  }
+
+  // Ensure hours and minutes are padded with zeros
+  const paddedHours = hh.toString().padStart(2, '0');
+  const paddedMinutes = mm.toString().padStart(2, '0');
+
+  return `${paddedHours}:${paddedMinutes}:00`;
+}
 
 async function createGTFS(inputFile) {
   try {
@@ -43,7 +68,7 @@ async function createGTFS(inputFile) {
     // Process each sheet (date)
     workbook.SheetNames.forEach((sheetName, sheetIndex) => {
       const sheet = workbook.Sheets[sheetName];
-      const data = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+      const data = XLSX.utils.sheet_to_json(sheet, { header: 1, raw: false });
 
       // Find the row with stop names (usually row 4 based on the example)
       const headerRowIndex = data.findIndex(row => row && row.includes('STD'));
@@ -57,7 +82,10 @@ async function createGTFS(inputFile) {
         const times = [];
         for (let rowIndex = headerRowIndex + 1; rowIndex < data.length; rowIndex++) {
           if (data[rowIndex] && data[rowIndex][colIndex]) {
-            times.push(data[rowIndex][colIndex]);
+            const formattedTime = formatTimeString(data[rowIndex][colIndex]);
+            if (formattedTime) {
+              times.push(formattedTime);
+            }
           }
         }
 
@@ -72,7 +100,7 @@ async function createGTFS(inputFile) {
           stopSequence.forEach((stopId, sequence) => {
             const time = times[sequence] || times[0]; // Use first time if specific stop time is missing
             if (time) {
-              stop_times.push(`${tripId},${time}:00,${time}:00,${stopId},${sequence + 1}`);
+              stop_times.push(`${tripId},${time},${time},${stopId},${sequence + 1}`);
             }
           });
         }
